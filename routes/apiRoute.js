@@ -5,13 +5,29 @@ DELETE /api/notes/:id - Should receive a query parameter containing the id of a 
 This means you'll need to find a way to give each note a unique id when it's saved.
 In order to delete a note, you'll need to read all notes from the db.json file, remove the note with the given id property, and then rewrite the notes to the db.json file.
 */
+// const store = require('../db/utilities')
+const notes = require('../db/db.json')
+const router = require('express').Router();
 
-const db = require("../db/db.json");
-import * as util from '../db/utilities';
-module.exports = function (app) {
 
-    app.get('/api/notes', function (req, res) {
-        const notes = await util.readFile();
-        res.json(db)
+    router.get('/notes', function (req, res) {
+            res.json(notes)
+//         store
+//             .getNotes()
+//             .then(notes => res.json(notes))
     })
-}
+
+    router.post('/notes', function (req, res) {
+            res.json(notes)
+//         store
+//             .getNotes()
+//             .then(notes => res.json(notes))
+    })
+    router.delete('/notes', function (req, res) {
+            res.json(notes)
+//         store
+//             .getNotes()
+//             .then(notes => res.json(notes))
+    })
+
+module.exports = router;
