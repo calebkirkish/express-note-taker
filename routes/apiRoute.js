@@ -19,15 +19,11 @@ const router = require('express').Router();
 
     router.post('/notes', function (req, res) {
             res.json(notes)
-//         store
-//             .getNotes()
-//             .then(notes => res.json(notes))
+
     })
     router.delete('/notes', function (req, res) {
             res.json(notes)
-//         store
-//             .getNotes()
-//             .then(notes => res.json(notes))
+
     })
 
 module.exports = router;
