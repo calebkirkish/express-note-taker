@@ -8,22 +8,26 @@ In order to delete a note, you'll need to read all notes from the db.json file, 
 // const store = require('../db/utilities')
 const notes = require('../db/db.json')
 const router = require('express').Router();
+const uuidv1 = require('uuid/v1');
 
 
-    router.get('/notes', function (req, res) {
-            res.json(notes)
-//         store
-//             .getNotes()
-//             .then(notes => res.json(notes))
-    })
+router.get('/notes', function (req, res) {
+  res.json(notes)
+  //         store
+  //             .getNotes()
+  //             .then(notes => res.json(notes))
+});
 
-    router.post('/notes', function (req, res) {
-            res.json(notes)
+router.post('/notes', function (req, res) {
+  let newNote ={title:req.body.title, text:req.body.text, id:uuidv1()};
+  console.log(newNote);
+  notes.push(newNote);
+  res.json(newNote);
+});
 
-    })
-    router.delete('/notes', function (req, res) {
-            res.json(notes)
+router.delete('/notes', function (req, res) {
+  res.json(notes)
 
-    })
+});
 
 module.exports = router;
